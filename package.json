@@ -1,0 +1,18 @@
+{
+  "name": "dreampasssser.github.io",
+  "version": "1.0.0",
+  "description": "dreampasssser's blog",
+  "main": "index.js",
+  "repository": "https://github.com/dreampasssser/dreampasssser.github.io.git",
+  "author": "dreampasssser <dreampasssser@foxmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
+  }
+}

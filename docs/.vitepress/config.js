@@ -8,12 +8,13 @@ const nav = [
     link: '/React/'
   },
   {
-    text: '算法',
-    link: '/算法/'
+    text: 'Algorithm',
+    link: '/Algorithm/'
   }
 ]
 
-export default {
+module.exports = {
+  base: '/',
   lang: 'zh-CN',
   title: "Dreampasssser's Blog",
   description: 'A VitePress site',

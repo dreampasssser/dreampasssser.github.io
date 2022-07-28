@@ -22,7 +22,10 @@ export default {
     nav,
     sidebar: 'auto',
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/dreampasssser/blog' }
+      {
+        icon: 'github',
+        link: 'https://github.com/dreampasssser/dreampasssser.github.io'
+      }
     ],
     footer: {
       message: 'Released under the MIT License.',

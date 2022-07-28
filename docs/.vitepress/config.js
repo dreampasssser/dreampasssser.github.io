@@ -20,6 +20,13 @@ export default {
   description: 'A VitePress site',
   themeConfig: {
     nav,
-    sidebar: 'auto'
+    sidebar: 'auto',
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/dreampasssser/blog' }
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2022-present dreampasssser'
+    }
   }
 }

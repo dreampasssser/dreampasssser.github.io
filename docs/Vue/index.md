@@ -8,6 +8,12 @@ title: Vue
 
 ### 大大实打实
 
+```js
+console.log('aaa')
+console.log('bbb')
+console.log('ccc')
+```
+
 ### 是粉色的反对
 
 ## 肯的方法定

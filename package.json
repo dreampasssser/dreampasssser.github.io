@@ -1,9 +1,8 @@
 {
-  "name": "dreampasssser.github.io",
+  "name": "blog",
   "version": "1.0.0",
   "description": "dreampasssser's blog",
-  "main": "index.js",
-  "repository": "https://github.com/dreampasssser/dreampasssser.github.io.git",
+  "repository": "https://github.com/dreampasssser/blog.git",
   "author": "dreampasssser <dreampasssser@foxmail.com>",
   "license": "MIT",
   "scripts": {

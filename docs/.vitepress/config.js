@@ -13,7 +13,7 @@ const nav = [
   }
 ]
 
-module.exports = {
+export default {
   base: '/',
   lang: 'zh-CN',
   title: "Dreampasssser's Blog",

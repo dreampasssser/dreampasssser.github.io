@@ -5,7 +5,7 @@ title: 主页
 # titleTemplate: Vite & Vue Powered Static Site Generator
 
 hero:
-  name: Dreampasssser' Blog
+  name: Dreampasssser's Blog
   text:
   tagline:
   actions:

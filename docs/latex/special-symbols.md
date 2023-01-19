@@ -46,7 +46,7 @@ title: 特殊符号
 |  `\prec`   |  $\prec$   |  `\succ`   |  $\succ$   |   `\subset`   |   $\subset$   |   `\supset`    |   $\supset$    |
 |  `\nprec`  |  $\nprec$  |  `\nsucc`  |  $\nsucc$  | `\not\subset` | $\not\subset$ | `\not\supset`  | $\not\supset$  |
 
-`\mid` 可以表示集合 $\{x\mid x是偶数\}$ 中的 $\mid$ 。
+`\mid` 可以表示集合 $\{x\mid x\text{是偶数}\}$ 中的 $\mid$ 。
 
 `\lvert A \rvert` 可以表示 A 集合的势 $\lvert A \rvert$ 。
 

@@ -86,7 +86,7 @@ $$\mathfrak{abcdefghijklmnopqrstuvwxyz}$$
 
 ## 字体大小
 
-以 large 为例，格式是这样的：`$\large{LaTeX}$` ，显示为 $\large{LaTeX}$。
+以 large 为例，格式是这样的：`$\large{LaTeX}$` ，显示为 $\large{LaTeX}$ 。
 
 字体大小从小到达依次有这些：`\tiny` 、`\scriptsize` 、`\footnotesize` 、`\small` 、`\normalsize` 、
 `\large` 、`\Large` 、`\LARGE` 、`\huge` 、`\Huge` ，如
@@ -101,7 +101,7 @@ $$
 \Large{LaTeX} \\
 \LARGE{LaTeX} \\
 \huge{LaTeX} \\
-\Huge{LaTeX} \\
+\Huge{LaTeX}
 $$
 
 ## 字体颜色

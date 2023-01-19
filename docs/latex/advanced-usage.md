@@ -241,7 +241,8 @@ $$
 - 用 `cases` 环境，以大括号为准左对齐，如
 
   ```latex
-  $$\begin{cases}
+  $$
+  \begin{cases}
   a_1x+b_1y+c_1z=d_1 \\
   a_2x+b_2y=d_2 \\
   a_3x=d_3

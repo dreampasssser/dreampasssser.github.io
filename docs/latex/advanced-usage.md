@@ -204,19 +204,19 @@ $$
 
 ## 对齐的等式或方程
 
-用 `aligned` 环境，在需要对齐的地方加一个 `&` 符号，通常放在 `=` 前面，需要换行的地方使用 `\\` 。若要在每行加一些说明，可以使用 `\text{说明文字}` 加在后面，中间用 `&` 隔开，一个 `&` 是右对齐，两个 `&` 是左对齐，说明文字全中文的话则不需要使用 `text{}` ，格式也没有影响。
+用 `aligned` 环境，在需要对齐的地方加一个 `&` 符号，通常放在 `=` 前面，需要换行的地方使用 `\\` 。若要在每行加一些说明，可以使用 `\text{说明文字}` 加在后面，中间用 `&` 隔开，一个 `&` 是右对齐，两个 `&` 是左对齐。
 
 ```latex
 $$
 \begin{aligned}
-(X \cap Y) - (X \cap Z) &= (X \cap Y) \cap (\overline{X \cap Z}) &&[差集定义] \\
-&= (X \cap Y) \cap (\overline{X} \cup \overline{Z}) &&[集合的德·摩根定律] \\
-&= ((X \cap Y) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) &&[分配律] \\
-&= ((Y \cap X) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) &&[交换律] \\
-&= (Y \cap (X \cap \overline{X})) \cup (X \cap (Y \cap \overline{Z})) &&[结合律] \\
-&= (Y \cap \varnothing) \cup (X \cap (Y - Z)) &&[补余律、差集定义] \\
-&= \varnothing \cup (X \cap (Y - Z)) &&[零律] \\
-&= X \cap (Y - Z) &&[同一律]
+(X \cap Y) - (X \cap Z) &= (X \cap Y) \cap (\overline{X \cap Z}) && \text{[差集定义]} \\
+&= (X \cap Y) \cap (\overline{X} \cup \overline{Z}) && \text{[集合的德摩根定律]} \\
+&= ((X \cap Y) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) && \text{[分配律]} \\
+&= ((Y \cap X) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) && \text{[交换律]} \\
+&= (Y \cap (X \cap \overline{X})) \cup (X \cap (Y \cap \overline{Z})) && \text{[结合律]} \\
+&= (Y \cap \varnothing) \cup (X \cap (Y - Z)) && \text{[补余律、差集定义]} \\
+&= \varnothing \cup (X \cap (Y - Z)) && \text{[零律]} \\
+&= X \cap (Y - Z) && \text{[同一律]}
 \end{aligned}
 $$
 ```
@@ -225,14 +225,14 @@ $$
 
 $$
 \begin{aligned}
-(X \cap Y) - (X \cap Z) &= (X \cap Y) \cap (\overline{X \cap Z}) &&[差集定义] \\
-&= (X \cap Y) \cap (\overline{X} \cup \overline{Z}) &&[集合的德·摩根定律] \\
-&= ((X \cap Y) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) &&[分配律] \\
-&= ((Y \cap X) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) &&[交换律] \\
-&= (Y \cap (X \cap \overline{X})) \cup (X \cap (Y \cap \overline{Z})) &&[结合律] \\
-&= (Y \cap \varnothing) \cup (X \cap (Y - Z)) &&[补余律、差集定义] \\
-&= \varnothing \cup (X \cap (Y - Z)) &&[零律] \\
-&= X \cap (Y - Z) &&[同一律]
+(X \cap Y) - (X \cap Z) &= (X \cap Y) \cap (\overline{X \cap Z}) && \text{[差集定义]} \\
+&= (X \cap Y) \cap (\overline{X} \cup \overline{Z}) && \text{[集合的德摩根定律]} \\
+&= ((X \cap Y) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) && \text{[分配律]} \\
+&= ((Y \cap X) \cap \overline{X}) \cup ((X \cap Y) \cap \overline{Z}) && \text{[交换律]} \\
+&= (Y \cap (X \cap \overline{X})) \cup (X \cap (Y \cap \overline{Z})) && \text{[结合律]} \\
+&= (Y \cap \varnothing) \cup (X \cap (Y - Z)) && \text{[补余律、差集定义]} \\
+&= \varnothing \cup (X \cap (Y - Z)) && \text{[零律]} \\
+&= X \cap (Y - Z) && \text{[同一律]}
 \end{aligned}
 $$
 

@@ -12,13 +12,11 @@ const nav = [
     link: '/latex/basics',
     activeMatch: '/latex/'
   },
-  // {
-  //   text: 'Others',
-  //   items: [
-  //     { text: 'TODO_1', link: '/Others/TODO_1' },
-  //     { text: 'TODO_2', link: '/Others/TODO_2' }
-  //   ]
-  // }
+  {
+    text: 'Others',
+    link: '/others/nodejs-version-management',
+    activeMatch: '/others/'
+  }
 ]
 
 const sidebar = {
@@ -34,6 +32,14 @@ const sidebar = {
         { text: '高级用法', link: '/latex/advanced-usage' }
       ]
     }
+  ],
+  '/others/': [
+    {
+      text: 'Others',
+      items: [
+        { text: 'nodejs 版本管理', link: '/others/nodejs-version-management' },
+      ]
+    }
   ]
 }
 
@@ -41,11 +47,12 @@ export default defineConfig({
   base: '/',
   lang: 'zh-CN',
   title: "Dreampasssser's Blog",
-  description: 'A VitePress site',
+  description: 'A VitePress site, markdown中的数学公式, LaTeX, nodejs版本管理',
   // lastUpdated: true,
   cleanUrls: 'without-subfolders',
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
+    ['meta', { name: 'keywords', content: 'LaTeX In Markdown, nodejs版本管理' }],
     [
       'link',
       {

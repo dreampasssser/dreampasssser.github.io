@@ -40,8 +40,8 @@ const sidebar = {
         {
           text: 'nodejs 版本管理',
           link: '/others/nodejs-version-management'
-        },
-        { text: 'TODO', link: '/others/TODO' }
+        }
+        // { text: 'TODO', link: '/others/TODO' }
       ]
     }
   ]

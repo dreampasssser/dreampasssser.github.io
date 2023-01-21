@@ -37,7 +37,11 @@ const sidebar = {
     {
       text: 'Others',
       items: [
-        { text: 'nodejs 版本管理', link: '/others/nodejs-version-management' },
+        {
+          text: 'nodejs 版本管理',
+          link: '/others/nodejs-version-management'
+        },
+        { text: 'TODO', link: '/others/TODO' }
       ]
     }
   ]
@@ -47,12 +51,16 @@ export default defineConfig({
   base: '/',
   lang: 'zh-CN',
   title: "Dreampasssser's Blog",
-  description: 'A VitePress site, markdown中的数学公式, LaTeX, nodejs版本管理',
+  description:
+    'A VitePress site, markdown中的数学公式, LaTeX, nodejs版本管理',
   // lastUpdated: true,
   cleanUrls: 'without-subfolders',
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['meta', { name: 'keywords', content: 'LaTeX In Markdown, nodejs版本管理' }],
+    [
+      'meta',
+      { name: 'keywords', content: 'LaTeX In Markdown, nodejs版本管理' }
+    ],
     [
       'link',
       {

@@ -15,7 +15,7 @@ title: nodejs 版本管理
 - 安装过程中设置的 nvm 安装路径会在 settings.txt 中写入 root 配置，设置的 Node.js Symlink
   会在 settings.txt 中写入 path 配置。
 
-  安装完后更换国内镜像源，一定不要使用命令行 `nvm node_mirror [url]` 和 `nvm npm_mirror [url]` ，
+  安装完后更换国内镜像源，不要使用命令行 `nvm node_mirror [url]` 和 `nvm npm_mirror [url]` ，
   这会导致 settings.txt 中已经写入的 path 丢失，然后 Node.js Symlink 就设置到 root 下了，
   而你的环境变量还保持着安装时设置的 Node.js Symlink ，这会导致就算后续安装了 node ，
   运行 `node -v` 时还是无法找到。
@@ -29,7 +29,7 @@ title: nodejs 版本管理
 
   其他会修改到 settings.txt 文件的命令最好也不要用，就直接去 settings.txt 里面改 。
 
-- 用 `nvm use version` 切换 node 版本时，一定要用管理员权限运行终端，不然会报 `exit status 1` 错误。
+- 用 `nvm use version` 切换 node 版本时，要用管理员权限运行终端，不然会报 `exit status 1` 错误。
   切换成功后会生成一个上边设置过的 Node.js Symlink（具体设置的路径，即 settings.txt 中的 path）文件夹，
   这个文件夹是带快捷方式图标的。
 

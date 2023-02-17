@@ -8,6 +8,11 @@ const nav = [
   // { text: 'React', link: '/React/' },
   // { text: 'Algorithm', link: '/Algorithm/' },
   {
+    text: 'DevOps',
+    link: '/devops/set-up-ci-cd-env',
+    activeMatch: '/devops/'
+  },
+  {
     text: 'LaTeX In Markdown',
     link: '/latex/basics',
     activeMatch: '/latex/'
@@ -20,6 +25,17 @@ const nav = [
 ]
 
 const sidebar = {
+  '/devops/': [
+    {
+      text: 'DevOps',
+      items: [
+        {
+          text: '用 Docker-Nginx-Jenkins-Gitlab 搭建 CI/CD 环境',
+          link: '/devops/set-up-ci-cd-env'
+        }
+      ]
+    }
+  ],
   '/latex/': [
     {
       text: 'LaTeX In Markdown',
@@ -54,7 +70,6 @@ export default defineConfig({
   description:
     'A VitePress site, markdown中的数学公式, LaTeX, nodejs版本管理',
   // lastUpdated: true,
-  cleanUrls: 'without-subfolders',
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     [

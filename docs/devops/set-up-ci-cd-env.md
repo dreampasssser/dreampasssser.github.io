@@ -15,86 +15,86 @@ title: 用 Docker-Nginx-Jenkins-Gitlab 搭建 CI/CD 环境
 
 ### 准备工作
 
-#### 系统要求
+- 系统要求
 
-- Ubuntu Kinetic 22.10
-- Ubuntu Jammy 22.04 (LTS)
-- Ubuntu Focal 20.04 (LTS)
-- Ubuntu Bionic 18.04 (LTS)
+  - Ubuntu Kinetic 22.10
+  - Ubuntu Jammy 22.04 (LTS)
+  - Ubuntu Focal 20.04 (LTS)
+  - Ubuntu Bionic 18.04 (LTS)
 
-#### 卸载旧版本
+- 卸载旧版本
 
-```sh
-sudo apt-get remove docker docker-engine docker.io containerd runc
-```
+  ```sh
+  sudo apt-get remove docker docker-engine docker.io containerd runc
+  ```
 
 ### 安装方法
 
-#### 使用 APT 安装
+- 使用 APT 安装
 
-- apt 升级，并添加相关软件包
+  - apt 升级，并添加相关软件包
+
+    ```sh
+    sudo apt-get update
+    ```
+
+    ```sh
+    sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+    ```
+
+  - 为了确认所下载软件包的合法性，需要添加软件源的 `GPG` 密钥（鉴于国内网络问题，改用国内源）
+
+    ```sh
+    # 权限不够时先执行这个，够则不执行
+    sudo mkdir -m 0755 -p /etc/apt/keyrings
+    ```
+
+    ```sh
+    curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    ```
+
+  - 向 `sources.list` 中添加 Docker 软件源
+
+    ```sh
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
+      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    ```
+
+  - 更新 apt 软件包缓存，并安装 `docker-ce`
+
+    ```sh
+    sudo apt-get update
+    ```
+
+    默认的 umask 可能配置错误，导致无法检测到存储库公钥文件。在更新包索引之前，尝试授予 Docker 公钥文件的读权限：
+
+    ```sh
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    sudo apt-get update
+    ```
+
+    安装 `docker-ce`
+
+    ```sh
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    ```
+
+- 使用脚本安装（未实操）
+
+  > `--mirror` 选项，指定源进行安装
+  >
+  > `--dry-run` 选项，了解脚本在被调用时将运行哪些步骤
 
   ```sh
-  sudo apt-get update
+  curl -fsSL get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh --dry-run --mirror Aliyun
   ```
-
-  ```sh
-  sudo apt-get install \
-      apt-transport-https \
-      ca-certificates \
-      curl \
-      gnupg \
-      lsb-release
-  ```
-
-- 为了确认所下载软件包的合法性，需要添加软件源的 `GPG` 密钥（鉴于国内网络问题，改用国内源）
-
-  ```sh
-  # 权限不够时先执行这个，够则不执行
-  sudo mkdir -m 0755 -p /etc/apt/keyrings
-  ```
-
-  ```sh
-  curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-  ```
-
-- 向 `sources.list` 中添加 Docker 软件源
-
-  ```sh
-  echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  ```
-
-- 更新 apt 软件包缓存，并安装 `docker-ce`
-
-  ```sh
-  sudo apt-get update
-  ```
-
-  默认的 umask 可能配置错误，导致无法检测到存储库公钥文件。在更新包索引之前，尝试授予 Docker 公钥文件的读权限：
-
-  ```sh
-  sudo chmod a+r /etc/apt/keyrings/docker.gpg
-  sudo apt-get update
-  ```
-
-  安装 `docker-ce`
-
-  ```sh
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-  ```
-
-#### 使用脚本安装
-
-> `--mirror` 选项，指定源进行安装
->
-> `--dry-run` 选项，了解脚本在被调用时将运行哪些步骤
-
-```sh
-curl -fsSL get.docker.com -o get-docker.sh
-sudo sh get-docker.sh --dry-run --mirror Aliyun
-```
 
 ### 启动 Docker
 
@@ -321,24 +321,24 @@ docker compose up -d
 
 - 管理插件
 
-  点击 **Manage Jenkins** ----> **Manage Plugins**
+  点击 **Manage Jenkins** ---> **Manage Plugins**
 
   <img src="./images/jenkins_02.png" />
 
   点击 **Avaliable plugins**，搜索勾选 **NodeJS** 、**Publish Over SSH** 、**GitLab** 插件，点击 **Install without restart** 直接安装
 
   <img src="./images/jenkins_03.png" />
-  
-  安装完成后，回到 **Manage Jenkins** ，**Manage Jenkins** ----> **Global Tool Configuration** ，配置 nodejs
-  
+
+  安装完成后，回到 **Manage Jenkins** ，**Manage Jenkins** ---> **Global Tool Configuration** ，配置 nodejs
+
   <img src="./images/jenkins_04.png" />
-  
+
   找到 **NodeJS** ，**新增 NodeJS** ，选择最新的 LTS 版本，保存
-  
+
   <img src="./images/jenkins_05.png" />
-  
-  回到 **Manage Jenkins** ，**Manage Jenkins** ----> **Configure System** ，在最下边找到 Publish Over SSH 并配置
-  
+
+  回到 **Manage Jenkins** ，**Manage Jenkins** ---> **Configure System** ，在最下边找到 Publish Over SSH 并配置
+
   <img src="./images/jenkins_06.jpg" />
 
 ## 配置 GitLab
@@ -350,8 +350,6 @@ docker compose up -d
 - 使用 root 密码登录
 
   进入页面后，如果没有重置密码的界面，而直接是登录界面，那就需要去 `$HOME/docker/gitlab/config/initial_root_password` 找到密码，用户名是 root ，然后登录即可。
-
-
 
 ## Jenkins 和 GitLab 关联
 
@@ -369,53 +367,51 @@ docker compose up -d
 
 在 Jenkins 中 **新建任务**，然后进行以下配置。
 
-#### 配置 *源码管理*，填写对应的源码库与分支
+- 配置 *源码管理*，填写对应的源码库与分支
 
-<img src="./images/jenkins_07.png" />
+  <img src="./images/jenkins_07.png" />
 
-Credentials 一项点击 **添加**，类型选择 Username with password ，用户名填之前在 GitLab 中创建的 jenkins 用户，密码填对应的密码（这里笔者也用过 SSH Username with private key，但一直没有成功）。
+  Credentials 一项点击 **添加**，类型选择 Username with password ，用户名填之前在 GitLab 中创建的 jenkins 用户，密码填对应的密码（这里笔者也用过 SSH Username with private key，但一直没有成功）。
 
-<img src="./images/jenkins_08.png" />
+  <img src="./images/jenkins_08.png" />
 
-#### 配置 *构建触发器*
+- 配置 *构建触发器*
 
-<img src="./images/jenkins_09.png" />
+  <img src="./images/jenkins_09.png" />
 
-#### 配置 *构建环境*
+- 配置 *构建环境*
 
-<img src="./images/jenkins_10.png" />
+  <img src="./images/jenkins_10.png" />
 
-#### 配置 *Build Steps*
+- 配置 *Build Steps*
 
-**增加构建步骤** ----> **执行 shell** ，输入需要执行的命令：
+  **增加构建步骤** ---> **执行 shell** ，输入需要执行的命令：
 
-```sh
-node -v
-npm -v
-npm install -g pnpm --registry=https://registry.npmmirror.com
-pnpm -v
-pnpm install --frozen-lockfile
-pnpm build
-rm -rf dist.tar
-tar -zcvf dist.tar ./dist
-```
+  ```sh
+  node -v
+  npm -v
+  npm install -g pnpm --registry=https://registry.npmmirror.com
+  pnpm -v
+  pnpm install --frozen-lockfile
+  pnpm build
+  rm -rf dist.tar
+  tar -zcvf dist.tar ./dist
+  ```
 
-`--frozen-lockfile` 这个参数在服务器 `install` 不会生成 `pnpm-lock.yaml`，防止服务器和本地代码冲突
+  `--frozen-lockfile` 这个参数在服务器 `install` 不会生成 `pnpm-lock.yaml`，防止服务器和本地代码冲突
 
-**增加构建步骤** ----> **Send files or execute commands over SSH** 。
+  **增加构建步骤** ---> **Send files or execute commands over SSH** 。
 
-<img src="./images/jenkins_11.png" />
+  <img src="./images/jenkins_11.png" />
 
-Exec command 中的命令为：
+  Exec command 中的命令为：
 
-```sh
-cd /home/pxk/docker/webserver/vue3-vite-ts
-tar zxvf dist.tar
-cp -rf dist/* .
-rm -rf dist.tar dist
-```
-
-
+  ```sh
+  cd /home/pxk/docker/webserver/vue3-vite-ts
+  tar zxvf dist.tar
+  cp -rf dist/* .
+  rm -rf dist.tar dist
+  ```
 
 ### GitLab 中配置 Webhooks
 
@@ -427,27 +423,27 @@ rm -rf dist.tar dist
 
 <img src="./images/gitlab_03.png" />
 
-需要到 **管理员** ----> **网络** ----> **出站请求** 这里，勾选上“允许来自 web hooks 和服务对本地网络的请求”，然后 **保存更改**。
+需要到 **管理员** ---> **网络** ---> **出站请求** 这里，勾选上“允许来自 web hooks 和服务对本地网络的请求”，然后 **保存更改**。
 
 <img src="./images/gitlab_04.png" />
 
 这样再回去 **添加Webhook** 就能成功了。
 
-添加成功之后，在页面最下边会生成一个 Project Hooks ，点击 **测试** ----> **推送事件** 测试一下，这时可能会报一个这样的错误：
+添加成功之后，在页面最下边会生成一个 Project Hooks ，点击 **测试** ---> **推送事件** 测试一下，这时可能会报一个这样的错误：
 
 <img src="./images/gitlab_06.jpg" />
 
 这需要 Jenkins 中改一些安全设置。
 
-Jenkins ----> 系统管理 ----> 全局安全配置 ----> 授权策略 ----> 匿名用户具有可读权限，确保这个选项 **勾选** 。
+Jenkins ---> 系统管理 ---> 全局安全配置 ---> 授权策略 ---> 匿名用户具有可读权限，确保这个选项 **勾选** 。
 
 <img src="./images/jenkins_13.jpg" />
 
-Jenkins ----> 系统管理 ----> 系统配置 ----> Gitlab ----> Enable authentication for '/project' end-point ，确保这个选项 **没选** 。
+Jenkins ---> 系统管理 ---> 系统配置 ---> Gitlab ---> Enable authentication for '/project' end-point ，确保这个选项 **没选** 。
 
 <img src="./images/jenkins_14.png" />
 
-### Jenkins 中构建项目
+## Jenkins 中构建项目
 
 在主页找到要构建的任务名称，点开后边下拉框，点击 **立即构建** ：
 
@@ -483,12 +479,3 @@ Finished: SUCCESS
 ```
 
 恭喜！可以去浏览器 `ip:81` （ip 用你自己的主机 ip）查看了。
-
-
-
-
-
-
-
-
-

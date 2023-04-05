@@ -80,7 +80,7 @@ export default defineConfig({
       'link',
       {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css'
+        href: 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.css'
       }
     ]
   ],

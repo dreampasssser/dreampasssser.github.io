@@ -88,21 +88,20 @@ $$\mathfrak{abcdefghijklmnopqrstuvwxyz}$$
 
 以 large 为例，格式是这样的：`$\large{LaTeX}$` ，显示为 $\large{LaTeX}$ 。
 
-字体大小从小到达依次有这些：`\tiny` 、`\scriptsize` 、`\footnotesize` 、`\small` 、`\normalsize` 、
-`\large` 、`\Large` 、`\LARGE` 、`\huge` 、`\Huge` ，如
+字体大小从小到达依次有如下这些：
 
-$$
-\tiny{LaTeX} \\
-\scriptsize{LaTeX} \\
-\footnotesize{LaTeX} \\
-\small{LaTeX} \\
-\normalsize{LaTeX} \\
-\large{LaTeX} \\
-\Large{LaTeX} \\
-\LARGE{LaTeX} \\
-\huge{LaTeX} \\
-\Huge{LaTeX}
-$$
+|          代码          |                 显示                 |
+| :--------------------: | :----------------------------------: |
+|     `\tiny{LaTeX}`     |     $\displaystyle \tiny{LaTeX}$     |
+|  `\scriptsize{LaTeX}`  |  $\displaystyle \scriptsize{LaTeX}$  |
+| `\footnotesize{LaTeX}` | $\displaystyle \footnotesize{LaTeX}$ |
+|    `\small{LaTeX}`     |    $\displaystyle \small{LaTeX}$     |
+|  `\normalsize{LaTeX}`  |  $\displaystyle \normalsize{LaTeX}$  |
+|    `\large{LaTeX}`     |    $\displaystyle \large{LaTeX}$     |
+|    `\Large{LaTeX}`     |    $\displaystyle \Large{LaTeX}$     |
+|    `\LARGE{LaTeX}`     |    $\displaystyle \LARGE{LaTeX}$     |
+|     `\huge{LaTeX}`     |     $\displaystyle \huge{LaTeX}$     |
+|     `\Huge{LaTeX}`     |     $\displaystyle \Huge{LaTeX}$     |
 
 ## 字体颜色
 

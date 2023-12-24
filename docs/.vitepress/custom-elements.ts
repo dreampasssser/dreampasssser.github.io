@@ -41,5 +41,5 @@ export default [
   'annotation',
   'annotation-xml',
   'eq',
-  'eqn'
+  'eqn',
 ]

@@ -43,7 +43,7 @@ title: nodejs 版本管理
  ERR_INVALID_ARG_TYPE  The "path" argument must be of type string. Received undefined
 ```
 
-- windows 上使用 PowerShell 安装 pnpm
+- windows 上使用 PowerShell 安装 pnpm（同样也是使用独立脚本安装时升级 pnpm 的命令）
 
   ```sh
   iwr https://get.pnpm.io/install.ps1 -useb | iex

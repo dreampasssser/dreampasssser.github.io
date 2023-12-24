@@ -5,22 +5,25 @@
   "repository": "https://github.com/dreampasssser/dreampasssser.github.io.git",
   "author": "dreampasssser <dreampasssser@foxmail.com>",
   "license": "MIT",
+  "type": "module",
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=7"
+    "node": ">=18",
+    "pnpm": ">=8"
   },
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "serve": "vitepress serve docs"
+    "preview": "vitepress preview docs",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "node scripts/copyAssets.js"
   },
   "dependencies": {
-    "katex": "^0.16.4",
+    "katex": "^0.16.9",
     "markdown-it-texmath": "^1.0.0"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.65",
-    "vue": "^3.2.47"
+    "vitepress": "^1.0.0-rc.32",
+    "vue": "^3.3.13"
   },
   "pnpm": {
     "peerDependencyRules": {
